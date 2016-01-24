@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Money", "Money\Money.csproj", "{184D78DB-D1E2-4087-990E-DCF5A8259EB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Money.Tests", "Money.Tests\Money.Tests.csproj", "{49F21EF2-2E08-40DC-B33D-19CBB8414B4C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{184D78DB-D1E2-4087-990E-DCF5A8259EB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{184D78DB-D1E2-4087-990E-DCF5A8259EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{184D78DB-D1E2-4087-990E-DCF5A8259EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{184D78DB-D1E2-4087-990E-DCF5A8259EB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49F21EF2-2E08-40DC-B33D-19CBB8414B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49F21EF2-2E08-40DC-B33D-19CBB8414B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49F21EF2-2E08-40DC-B33D-19CBB8414B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49F21EF2-2E08-40DC-B33D-19CBB8414B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
