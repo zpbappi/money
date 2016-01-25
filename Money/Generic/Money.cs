@@ -22,10 +22,29 @@ namespace Money.Generic
         public Money(T amount)
             : this(
                 amount,
-                new System.Globalization.RegionInfo(System.Globalization.CultureInfo.CurrentUICulture.LCID)
-                    .ISOCurrencySymbol)
+                new System.Globalization.RegionInfo(System.Globalization.CultureInfo.CurrentUICulture.LCID).ISOCurrencySymbol)
         {
         }
+
+        #region Equality comparison
+
+        public static bool operator ==(Money<T> money1, Money<T> money2)
+        {
+            if (((object)money1 == null) || ((object)money2 == null))
+                return false;
+
+            if (money1.Currency != money2.Currency)
+                return false;
+
+            return money1.Amount.Equals(money2.Amount);
+        }
+
+        public static bool operator !=(Money<T> money1, Money<T> money2)
+        {
+            return !(money1 == money2);
+        }
+
+        #endregion
 
         private static bool IsNullable<TAmount>()
         {
