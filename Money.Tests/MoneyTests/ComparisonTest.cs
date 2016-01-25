@@ -1,4 +1,5 @@
-﻿using Shouldly;
+﻿using System;
+using Shouldly;
 using Xunit;
 
 namespace Money.Tests.MoneyTests
@@ -9,13 +10,35 @@ namespace Money.Tests.MoneyTests
         [InlineData(42, "AUD")]
         [InlineData(-100, "AUD")]
         [InlineData(0, "USD")]
-        public void AnyMoneyShouldBeGreaterThanNull(decimal amount, string currency)
+        public void NullInvariant(decimal amount, string currency)
         {
             var money = new Money(amount, currency);
             
-            var actual = money > null;
+            money.ShouldBeGreaterThan(null);
+            money.ShouldBeGreaterThanOrEqualTo(null);
 
-            actual.ShouldBeTrue();
+            var actual = money < null;
+            actual.ShouldBeFalse();
+
+            actual = money <= null;
+            actual.ShouldBeFalse();
+        }
+
+        [Theory]
+        [InlineData(1, "AUD", 1, "USD")]
+        [InlineData(1, "AUD", 42, "USD")]
+        public void ShouldNotAllowComparisonBetweenDifferentCurrencies(
+            decimal amount1,
+            string currency1,
+            decimal amount2,
+            string currency2)
+        {
+            var money1 = new Money(amount1, currency1);
+            var money2 = new Money(amount2, currency2);
+            Should.Throw<InvalidOperationException>(() =>
+            {
+                var result = money1 > money2;
+            });
         }
 
         [Theory]

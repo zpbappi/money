@@ -18,7 +18,7 @@ namespace Money.Tests.MoneyTests
         [InlineData(42, "AUD")]
         public void ShouldNotThrowWithProperValues(decimal amount, string currency)
         {
-            Should.NotThrow(() => new global::Money.Money(amount, currency));
+            Should.NotThrow(() => new Money(amount, currency));
         }
 
         [Theory]
@@ -33,7 +33,7 @@ namespace Money.Tests.MoneyTests
         public void CurrencyCodeShouldBeCaseIgnorant(string currency)
         {
             const string expectedCurrency = "AUD";
-            var money = new global::Money.Money(42, currency);
+            var money = new Money(42, currency);
 
             money.Currency.ShouldBe(expectedCurrency);
         }
@@ -41,7 +41,7 @@ namespace Money.Tests.MoneyTests
         [Fact]
         public void WhenCurrencyIsNotSpecified_ShouldCreateWithCurrentCultureCurrency()
         {
-            var money = new global::Money.Money(42);
+            var money = new Money(42);
             var expected =
                 new System.Globalization.RegionInfo(System.Globalization.CultureInfo.CurrentUICulture.LCID)
                     .ISOCurrencySymbol.ToUpperInvariant();
