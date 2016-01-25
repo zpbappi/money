@@ -9,7 +9,7 @@ namespace Money.Generic
 
         public Money(T amount, string currency)
         {
-            if (IsNullable<T>() && amount == null)
+            if (TypeHelper.CanHaveNull<T>() && amount == null)
                 throw new ArgumentNullException("amount");
 
             if(string.IsNullOrWhiteSpace(currency))
@@ -45,18 +45,5 @@ namespace Money.Generic
         }
 
         #endregion
-
-        private static bool IsNullable<TAmount>()
-        {
-            var type = typeof(TAmount);
-            
-            if (!type.IsValueType) 
-                return true; // reference type, definately nullable
-            
-            if (Nullable.GetUnderlyingType(type) != null) 
-                return true; // Nullable<T>
-            
-            return false; // value-type
-        }
     }
 }

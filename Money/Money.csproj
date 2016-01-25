@@ -44,6 +44,7 @@
     <Compile Include="Generic\Money.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
