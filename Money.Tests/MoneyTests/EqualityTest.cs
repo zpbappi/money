@@ -1,9 +1,9 @@
 ﻿using Shouldly;
 using Xunit;
 
-namespace Money.Tests
+namespace Money.Tests.MoneyTests
 {
-    public class MoneyEqualityTest
+    public class EqualityTest
     {
         [Theory]
         [InlineData(42, 42, true)]

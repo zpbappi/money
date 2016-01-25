@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generic\Comparable.cs" />
     <Compile Include="Generic\Money.cs" />
+    <Compile Include="Generic\Equality.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
