@@ -1,17 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Money.Generic
 {
-    public class Money<T>
+    public class Money<T> : IEquatable<Money<T>>
     {
         public T Amount { get; private set; }
         public string Currency { get; private set; }
 
         public Money(T amount, string currency)
         {
-            if (TypeHelper.CanHaveNull<T>() && amount == null)
+            if(TypeHelper.CanHaveNull<T>() && amount == null)
                 throw new ArgumentNullException("amount");
-
             if(string.IsNullOrWhiteSpace(currency))
                 throw new ArgumentNullException("currency");
 
@@ -26,17 +26,14 @@ namespace Money.Generic
         {
         }
 
-        #region Equality comparison
-
         public static bool operator ==(Money<T> money1, Money<T> money2)
         {
-            if (((object)money1 == null) || ((object)money2 == null))
+            if (ReferenceEquals(null, money1))
+                return false;
+            if (ReferenceEquals(null, money2))
                 return false;
 
-            if (money1.Currency != money2.Currency)
-                return false;
-
-            return money1.Amount.Equals(money2.Amount);
+            return money1.Equals(money2);
         }
 
         public static bool operator !=(Money<T> money1, Money<T> money2)
@@ -44,6 +41,32 @@ namespace Money.Generic
             return !(money1 == money2);
         }
 
-        #endregion
+        public bool Equals(Money<T> other)
+        {
+            if (ReferenceEquals(null, other)) 
+                return false;
+            if (ReferenceEquals(this, other)) 
+                return true;
+            
+            return EqualityComparer<T>.Default.Equals(this.Amount, other.Amount) && 
+                string.Equals(this.Currency, other.Currency);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return this.Equals((Money<T>)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (EqualityComparer<T>.Default.GetHashCode(this.Amount) * 397) ^ this.Currency.GetHashCode();
+            }
+        }
+
     }
 }
