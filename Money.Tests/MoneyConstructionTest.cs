@@ -16,12 +16,6 @@ namespace Money.Tests
             Should.Throw<ArgumentNullException>(() => new Money(42, currency));
         }
 
-        [Fact]
-        public void ShouldThrowWithNullValues()
-        {
-            Should.Throw<ArgumentNullException>(() => new Money<decimal?>(null, "AUD"));
-        }
-
         [Theory]
         [InlineData(42, "AUD")]
         public void ShouldNotThrowWithProperValues(decimal amount, string currency)

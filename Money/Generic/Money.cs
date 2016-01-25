@@ -3,15 +3,14 @@ using System.Collections.Generic;
 
 namespace Money.Generic
 {
-    public class Money<T> : IEquatable<Money<T>>
+    public class Money<T> 
+    where T : struct, IComparable, IComparable<T>
     {
         public T Amount { get; private set; }
         public string Currency { get; private set; }
 
         public Money(T amount, string currency)
         {
-            if(TypeHelper.CanHaveNull<T>() && amount == null)
-                throw new ArgumentNullException("amount");
             if(string.IsNullOrWhiteSpace(currency))
                 throw new ArgumentNullException("currency");
 
@@ -67,6 +66,5 @@ namespace Money.Generic
                 return (EqualityComparer<T>.Default.GetHashCode(this.Amount) * 397) ^ this.Currency.GetHashCode();
             }
         }
-
     }
 }
