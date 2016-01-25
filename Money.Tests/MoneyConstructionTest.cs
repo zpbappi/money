@@ -1,4 +1,5 @@
 ﻿using System;
+using Money.Generic;
 using Xunit;
 using Shouldly;
 
@@ -12,32 +13,48 @@ namespace Money.Tests
         [InlineData("")]
         public void ShouldThrowWithEmptyCurrency(string currency)
         {
-            Should.Throw<ArgumentNullException>(() => Money.Create(42, currency));
+            Should.Throw<ArgumentNullException>(() => new Money(42, currency));
         }
 
         [Fact]
         public void ShouldThrowWithNullValues()
         {
-            Should.Throw<ArgumentNullException>(() => Money<decimal?>.Create(null, "AUD"));
+            Should.Throw<ArgumentNullException>(() => new Money<decimal?>(null, "AUD"));
         }
 
         [Theory]
         [InlineData(42, "AUD")]
         public void ShouldNotThrowWithProperValues(decimal amount, string currency)
         {
-            Should.NotThrow(() => Money.Create(amount, currency));
+            Should.NotThrow(() => new Money(amount, currency));
         }
 
         [Theory]
-        [InlineData("aud", "AUD")]
-        [InlineData("aUd", "AuD")]
-        [InlineData("Aud", "AUD")]
-        public void CurrencyCodeShouldBeCaseIgnorant(string currencyCase1, string currencyCase2)
+        [InlineData("aud")]
+        [InlineData("Aud")]
+        [InlineData("aUd")]
+        [InlineData("auD")]
+        [InlineData("AUd")]
+        [InlineData("AuD")]
+        [InlineData("aUD")]
+        [InlineData("AUD")]
+        public void CurrencyCodeShouldBeCaseIgnorant(string currency)
         {
-            var money1 = Money.Create(42, currencyCase1);
-            var money2 = Money.Create(42, currencyCase2);
+            const string expectedCurrency = "AUD";
+            var money = new Money(42, currency);
 
-            money1.Currency.ShouldBe(money2.Currency);
+            money.Currency.ShouldBe(expectedCurrency);
+        }
+
+        [Fact]
+        public void WhenCurrencyIsNotSpecified_ShouldCreateWithCurrentCultureCurrency()
+        {
+            var money = new Money(42);
+            var expected =
+                new System.Globalization.RegionInfo(System.Globalization.CultureInfo.CurrentUICulture.LCID)
+                    .ISOCurrencySymbol.ToUpperInvariant();
+
+            money.Currency.ShouldBe(expected);
         }
     }
 }
