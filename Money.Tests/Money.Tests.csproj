@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Internal\Helpers\CustomNumber.cs" />
     <Compile Include="Internal\Helpers\NumericCastAssertionHelper.cs" />
     <Compile Include="Internal\Helpers\NumericTypeHelperTests.cs" />
     <Compile Include="Internal\Helpers\UnerOperationHelperTests.cs" />

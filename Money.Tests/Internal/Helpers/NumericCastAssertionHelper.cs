@@ -30,7 +30,8 @@ namespace Money.Tests.Internal.Helpers
                 NumericTypeHelper.CanCastTo<long>(value),
                 NumericTypeHelper.CanCastTo<double>(value),
                 NumericTypeHelper.CanCastTo<decimal>(value),
-                NumericTypeHelper.CanCastTo<BigInteger>(value)
+                NumericTypeHelper.CanCastTo<BigInteger>(value),
+                NumericTypeHelper.CanCastTo<CustomNumber>(value)
             };
             return castingResults;
         }

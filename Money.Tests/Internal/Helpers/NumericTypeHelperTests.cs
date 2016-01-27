@@ -78,6 +78,17 @@ namespace Money.Tests.Internal.Helpers
             bigNumber.ShouldBeConvertibleToAllNumericTypes();
         }
 
+        [Theory]
+        [InlineData(42)]
+        [InlineData(0)]
+        [InlineData(-100)]
+        [InlineData(-99999999999)]
+        public void CanCastFromACustomNumberType(decimal number)
+        {
+            var customNumber = new CustomNumber(number);
+            customNumber.ShouldBeConvertibleToAllNumericTypes();
+        }
+
 
         [Theory]
         [InlineData("VALUE")]
