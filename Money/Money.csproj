@@ -45,6 +45,7 @@
     <Compile Include="Generic\Money.cs" />
     <Compile Include="Generic\Equality.cs" />
     <Compile Include="Internal\Helpers\NumericTypeHelper.cs" />
+    <Compile Include="Internal\Helpers\UnaryOperationHelper.cs" />
     <Compile Include="Money.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

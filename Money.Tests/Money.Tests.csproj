@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Internal\Helpers\NumericCastAssertionHelper.cs" />
     <Compile Include="Internal\Helpers\NumericTypeHelperTests.cs" />
+    <Compile Include="Internal\Helpers\UnerOperationHelperTests.cs" />
     <Compile Include="MoneyTests\ComparisonTest.cs" />
     <Compile Include="MoneyTests\ConstructionTest.cs" />
     <Compile Include="MoneyTests\EqualityTest.cs" />
