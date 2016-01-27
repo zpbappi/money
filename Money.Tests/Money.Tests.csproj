@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Internal\Helpers\NumericCastAssertionHelper.cs" />
+    <Compile Include="Internal\Helpers\NumericTypeHelperTests.cs" />
     <Compile Include="MoneyTests\ComparisonTest.cs" />
     <Compile Include="MoneyTests\ConstructionTest.cs" />
     <Compile Include="MoneyTests\EqualityTest.cs" />
