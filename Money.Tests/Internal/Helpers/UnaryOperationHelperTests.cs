@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Money.Tests.Internal.Helpers
 {
-    public class UnerOperationHelperTests
+    public class UnaryOperationHelperTests
     {
         [Fact]
         public void UnaryOperationOnIntShouldBeSupported()
