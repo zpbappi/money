@@ -70,6 +70,7 @@
     <Compile Include="MoneyTests\ComparisonTest.cs" />
     <Compile Include="MoneyTests\ConstructionTest.cs" />
     <Compile Include="MoneyTests\EqualityTest.cs" />
+    <Compile Include="MoneyTests\UnaryOperationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

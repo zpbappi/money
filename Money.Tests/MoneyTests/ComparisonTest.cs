@@ -1,9 +1,11 @@
 ﻿using System;
+using Money.Generic;
 using Shouldly;
 using Xunit;
 
 namespace Money.Tests.MoneyTests
 {
+    using Money = Money<decimal>;
     public class ComparisonTest
     {
         [Theory]
@@ -54,7 +56,7 @@ namespace Money.Tests.MoneyTests
             bool expected)
         {
             const string currency = "AUD";
-            Money m1 = new Money(amount1, currency), 
+            Money m1 = new Money(amount1, currency),
                 m2 = new Money(amount2, currency);
 
             var actual = m1 > m2;

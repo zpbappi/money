@@ -1,8 +1,10 @@
-﻿using Shouldly;
+﻿using Money.Generic;
+using Shouldly;
 using Xunit;
 
 namespace Money.Tests.MoneyTests
 {
+    using Money = Money<decimal>;
     public class EqualityTest
     {
         [Theory]
