@@ -15,6 +15,11 @@ namespace Money
             return ApplyUnaryOperation(me.Amount, me.Currency, Expression.Decrement);
         }
 
+        public static Money<T> operator -(Money<T> me)
+        {
+            return ApplyUnaryOperation(me.Amount, me.Currency, Expression.Negate);
+        }
+
         private static Money<T> ApplyUnaryOperation(
             T amount, 
             string currency,
