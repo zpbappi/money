@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Money.Generic
+namespace Money
 {
     public partial class Money<T> : 
         IEquatable<Money<T>>, IComparable, IComparable<Money<T>> 

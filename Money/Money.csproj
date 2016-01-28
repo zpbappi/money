@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generic\Comparable.cs" />
-    <Compile Include="Generic\Money.cs" />
-    <Compile Include="Generic\Equality.cs" />
-    <Compile Include="Generic\UnaryOperators.cs" />
+    <Compile Include="Parts\Comparable.cs" />
+    <Compile Include="Money.cs" />
+    <Compile Include="Parts\Equality.cs" />
+    <Compile Include="Parts\UnaryOperators.cs" />
     <Compile Include="Internal\Helpers\NumericTypeHelper.cs" />
     <Compile Include="Internal\Helpers\UnaryOperationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

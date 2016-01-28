@@ -1,5 +1,4 @@
-﻿using Money.Generic;
-using Shouldly;
+﻿using Shouldly;
 using Xunit;
 
 namespace Money.Tests.MoneyTests

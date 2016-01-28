@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Money.Generic
+namespace Money
 {
     public partial class Money<T>
     {

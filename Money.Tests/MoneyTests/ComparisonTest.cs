@@ -1,5 +1,4 @@
 ﻿using System;
-using Money.Generic;
 using Shouldly;
 using Xunit;
 

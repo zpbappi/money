@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Money.Generic
+namespace Money
 {
     public partial class Money<T>
     {

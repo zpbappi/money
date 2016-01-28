@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Money.Tests.MoneyTests
 {
-    using Money = Money.Generic.Money<decimal>;
+    using Money = Money<decimal>;
     public class UnaryOperationTest
     {
         [Theory]

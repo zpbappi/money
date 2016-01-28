@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Money.Generic
+namespace Money
 {
     public partial class Money<T>
     {
