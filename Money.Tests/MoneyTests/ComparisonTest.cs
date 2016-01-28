@@ -1,4 +1,5 @@
 ﻿using System;
+using Money.Exceptions;
 using Shouldly;
 using Xunit;
 
@@ -36,7 +37,7 @@ namespace Money.Tests.MoneyTests
         {
             var money1 = new Money(amount1, currency1);
             var money2 = new Money(amount2, currency2);
-            Should.Throw<InvalidOperationException>(() =>
+            Should.Throw<CurrencyMismatchException>(() =>
             {
                 var result = money1 > money2;
             });

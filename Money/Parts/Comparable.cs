@@ -1,4 +1,5 @@
 ﻿using System;
+using Money.Exceptions;
 
 namespace Money
 {
@@ -10,8 +11,10 @@ namespace Money
                 return 1;
 
             if (this.Currency != other.Currency)
-                throw new InvalidOperationException(string.Format("Cannot compare {0} and {1}.", this.Currency,
-                    other.Currency));
+                throw new CurrencyMismatchException(
+                    this.Currency, 
+                    other.Currency, 
+                    string.Format("Cannot compare {0} and {1}.", this.Currency, other.Currency));
 
             return this.Amount.CompareTo(other.Amount);
         }
