@@ -12,8 +12,8 @@ namespace Money
 
             if (this.Currency != other.Currency)
                 throw new CurrencyMismatchException(
-                    this.Currency, 
                     other.Currency, 
+                    this.Currency, 
                     string.Format("Cannot compare {0} and {1}.", this.Currency, other.Currency));
 
             return this.Amount.CompareTo(other.Amount);
@@ -28,7 +28,10 @@ namespace Money
                 return 0;
 
             if (obj.GetType() != this.GetType())
-                throw new InvalidOperationException(string.Format("Cannot convert object of type '{0}' to Money.", obj.GetType()));
+                throw new IncompatibleMoneyTypeException(
+                    obj.GetType(),
+                    this.GetType(),
+                    string.Format("Cannot convert object of type '{0}' to '{1}'.", obj.GetType().FullName, this.GetType().FullName));
 
             return this.CompareTo(obj as Money<T>);
         }

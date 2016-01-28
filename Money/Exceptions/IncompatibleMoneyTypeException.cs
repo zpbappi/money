@@ -2,12 +2,12 @@
 
 namespace Money.Exceptions
 {
-    public class IncompatibleAmountTypeException : InvalidOperationException
+    public class IncompatibleMoneyTypeException : InvalidOperationException
     {
         public Type SourceType { get; set; }
         public Type DestinationType { get; set; }
 
-        public IncompatibleAmountTypeException(
+        public IncompatibleMoneyTypeException(
             Type sourceType,
             Type destinationType,
             string message)
