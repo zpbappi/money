@@ -66,6 +66,7 @@ namespace Money.Tests.Internal.Helpers
             UnaryOperationHelper.SupportsDecrement<T>().ShouldBe(expectedValue);
             UnaryOperationHelper.SupportsNegation<T>().ShouldBe(expectedValue);
             UnaryOperationHelper.SupportsIncrement<T>().ShouldBe(expectedValue);
+            UnaryOperationHelper.SupportsCheckedNegation<T>().ShouldBe(expectedValue);
         }
     }
 

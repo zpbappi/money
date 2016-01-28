@@ -34,6 +34,11 @@ namespace Money.Internal.Helpers
             return SupportsUnaryOperation<T>(Expression.Negate);
         }
 
+        public static bool SupportsCheckedNegation<T>()
+        {
+            return SupportsUnaryOperation<T>(Expression.NegateChecked);
+        }
+
         public static bool SupportsUnaryPlus<T>()
         {
             return SupportsUnaryOperation<T>(Expression.UnaryPlus);
