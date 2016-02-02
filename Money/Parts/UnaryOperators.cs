@@ -14,7 +14,7 @@ namespace Money
 
         public static Money<T> operator --(Money<T> me)
         {
-            var val = BinaryOperationHelper.AddChecked(me.Amount, NumericTypeHelper.ConvertTo<T>(-1));
+            var val = BinaryOperationHelper.SubtractChecked(me.Amount, NumericTypeHelper.ConvertTo<T>(1));
             return new Money<T>(val, me.Currency);
         }
 
