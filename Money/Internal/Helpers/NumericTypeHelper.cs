@@ -20,5 +20,10 @@ namespace Money.Internal.Helpers
                 return false;
             }
         }
+
+        public static T ConvertTo<T>(object value)
+        {
+            return (T) Convert.ChangeType(value, typeof (T));
+        }
     }
 }

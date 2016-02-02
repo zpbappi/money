@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using Money.Internal.Helpers;
 
 namespace Money
 {
@@ -7,17 +8,19 @@ namespace Money
     {
         public static Money<T> operator ++(Money<T> me)
         {
-            return ApplyUnaryOperation(me.Amount, me.Currency, Expression.Increment);
+            var val = BinaryOperationHelper.AddChecked(me.Amount, NumericTypeHelper.ConvertTo<T>(1));
+            return new Money<T>(val, me.Currency);
         }
 
         public static Money<T> operator --(Money<T> me)
         {
-            return ApplyUnaryOperation(me.Amount, me.Currency, Expression.Decrement);
+            var val = BinaryOperationHelper.AddChecked(me.Amount, NumericTypeHelper.ConvertTo<T>(-1));
+            return new Money<T>(val, me.Currency);
         }
 
         public static Money<T> operator -(Money<T> me)
         {
-            return ApplyUnaryOperation(me.Amount, me.Currency, Expression.Negate);
+            return ApplyUnaryOperation(me.Amount, me.Currency, Expression.NegateChecked);
         }
 
         private static Money<T> ApplyUnaryOperation(

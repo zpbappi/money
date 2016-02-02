@@ -1,3 +1,4 @@
+using System;
 using Shouldly;
 using Xunit;
 
@@ -55,6 +56,45 @@ namespace Money.Tests.MoneyTests
             var expected = new Money(-amount);
 
             money.ShouldBe(expected);
+        }
+
+        [Fact]
+        public void ForBoundedTypes_ShouldThrowOverFlowOnIncrement()
+        {
+            var shortMoney = new Money<short>(short.MaxValue);
+            Should.Throw<OverflowException>(() => ++shortMoney);
+
+            var intMoney = new Money<int>(int.MaxValue);
+            Should.Throw<OverflowException>(() => ++intMoney);
+
+            var longMoney = new Money<long>(long.MaxValue);
+            Should.Throw<OverflowException>(() => ++longMoney);
+        }
+
+        [Fact]
+        public void ForBoundedTypes_ShouldThrowOverFlowOnDecrement()
+        {
+            var shortMoney = new Money<short>(short.MinValue);
+            Should.Throw<OverflowException>(() => --shortMoney);
+
+            var intMoney = new Money<int>(int.MinValue);
+            Should.Throw<OverflowException>(() => --intMoney);
+
+            var longMoney = new Money<long>(long.MinValue);
+            Should.Throw<OverflowException>(() => --longMoney);
+        }
+
+        [Fact]
+        public void ForBoundedTypes_ShouldThrowOverFlowOnNegate()
+        {
+            var shortMoney = new Money<short>(short.MinValue);
+            Should.Throw<OverflowException>(() => { var m = -shortMoney; });
+
+            var intMoney = new Money<int>(int.MinValue);
+            Should.Throw<OverflowException>(() => { var m = -intMoney; });
+
+            var longMoney = new Money<long>(long.MinValue);
+            Should.Throw<OverflowException>(() => { var m = -longMoney; });
         }
     }
 }
