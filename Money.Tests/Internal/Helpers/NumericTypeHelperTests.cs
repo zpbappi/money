@@ -105,6 +105,26 @@ namespace Money.Tests.Internal.Helpers
                 item => item.ShouldNotBeConvertibleToAnyNumericType());
         }
 
+        [Fact]
+        public void ShouldChangeTypeProperly()
+        {
+            NumericTypeHelper.ConvertTo<long>(42d).ShouldBeOfType<long>();
+            NumericTypeHelper.ConvertTo<BigInteger>(123m).ShouldBeOfType<BigInteger>();
+        }
+
+        [Fact]
+        public void TryConvert_ShouldReturnNullWhenFailedDueToOverflow()
+        {
+            NumericTypeHelper.TryConvertTo<int>(long.MaxValue).ShouldBeNull();
+            NumericTypeHelper.TryConvertTo<short>(int.MinValue).ShouldBeNull();
+        }
+
+        [Fact]
+        public void TryConvert_ShouldReturnValueWithinProperRange()
+        {
+            NumericTypeHelper.TryConvertTo<int>(42L).Value.ShouldBe(42);
+        }
+
         private static List<object> GetInconvertibleObjects()
         {
             return new List<object>

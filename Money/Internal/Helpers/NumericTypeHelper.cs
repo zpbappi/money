@@ -23,7 +23,20 @@ namespace Money.Internal.Helpers
 
         public static T ConvertTo<T>(object value)
         {
-            return (T) Convert.ChangeType(value, typeof (T));
+            var exp = Expression.ConvertChecked(Expression.Constant(value, value.GetType()), typeof(T));
+            return Expression.Lambda<Func<T>>(exp).Compile()();
+        }
+
+        public static T? TryConvertTo<T>(object value) where T : struct 
+        {
+            try
+            {
+                return ConvertTo<T>(value);
+            }
+            catch (OverflowException)
+            {
+                return null;
+            }
         }
     }
 }
