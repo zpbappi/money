@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CurrencyMismatchException.cs" />
+    <Compile Include="Exceptions\IncompatibleAmountTypeException.cs" />
     <Compile Include="Exceptions\IncompatibleMoneyTypeException.cs" />
     <Compile Include="Internal\Helpers\BinaryOperationHelper.cs" />
     <Compile Include="Parts\Comparable.cs" />

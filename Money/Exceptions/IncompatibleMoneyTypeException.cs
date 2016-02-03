@@ -4,8 +4,8 @@ namespace Money.Exceptions
 {
     public class IncompatibleMoneyTypeException : InvalidOperationException
     {
-        public Type SourceType { get; set; }
-        public Type DestinationType { get; set; }
+        public Type SourceType { get; private set; }
+        public Type DestinationType { get; private set; }
 
         public IncompatibleMoneyTypeException(
             Type sourceType,
