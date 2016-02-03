@@ -25,7 +25,7 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         }
 
         [Fact]
-        public void MultiplyinhSameDataType_ShouldReflectInMoney()
+        public void MultiplyingSameDataType_ShouldReflectInMoney()
         {
             const int delta = 100;
             var money = new Money<int>(42);
@@ -75,31 +75,31 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         [Fact]
         public void MultiplicationShouldWorkWithAnyCompatibleType()
         {
-            const short delta = 100;
-            const short expected = 42 * delta;
+            const short multiplier = 100;
+            const short expected = 42 * multiplier;
 
-            AssertCanMultiplyAllNumericTypesWithinRange(new Money<short>(42), delta, expected);
-            AssertCanMultiplyAllNumericTypesWithinRange(new Money<int>(42), delta, expected);
-            AssertCanMultiplyAllNumericTypesWithinRange(new Money<long>(42L), delta, expected);
-            AssertCanMultiplyAllNumericTypesWithinRange(new Money<float>(42f), delta, expected);
-            AssertCanMultiplyAllNumericTypesWithinRange(new Money<double>(42d), delta, expected);
-            AssertCanMultiplyAllNumericTypesWithinRange(new Money<decimal>(42m), delta, expected);
-            AssertCanMultiplyAllNumericTypesWithinRange(new Money<BigInteger>(new BigInteger(42)), delta, expected);
+            AssertCanMultiplyAllNumericTypesWithinRange(new Money<short>(42), multiplier, expected);
+            AssertCanMultiplyAllNumericTypesWithinRange(new Money<int>(42), multiplier, expected);
+            AssertCanMultiplyAllNumericTypesWithinRange(new Money<long>(42L), multiplier, expected);
+            AssertCanMultiplyAllNumericTypesWithinRange(new Money<float>(42f), multiplier, expected);
+            AssertCanMultiplyAllNumericTypesWithinRange(new Money<double>(42d), multiplier, expected);
+            AssertCanMultiplyAllNumericTypesWithinRange(new Money<decimal>(42m), multiplier, expected);
+            AssertCanMultiplyAllNumericTypesWithinRange(new Money<BigInteger>(new BigInteger(42)), multiplier, expected);
 
         }
 
         private static void AssertCanMultiplyAllNumericTypesWithinRange<T>(
             Money<T> money,
-            short delta,
+            short multiplier,
             T expected)
             where T : struct, IComparable, IComparable<T>
         {
-            (money * (int)delta).Amount.ShouldBe(expected);
-            (money * (long)delta).Amount.ShouldBe(expected);
-            (money * (double)delta).Amount.ShouldBe(expected);
-            (money * (float)delta).Amount.ShouldBe(expected);
-            (money * (decimal)delta).Amount.ShouldBe(expected);
-            (money * (BigInteger)delta).Amount.ShouldBe(expected);
+            (money * (int)multiplier).Amount.ShouldBe(expected);
+            (money * (long)multiplier).Amount.ShouldBe(expected);
+            (money * (double)multiplier).Amount.ShouldBe(expected);
+            (money * (float)multiplier).Amount.ShouldBe(expected);
+            (money * (decimal)multiplier).Amount.ShouldBe(expected);
+            (money * (BigInteger)multiplier).Amount.ShouldBe(expected);
         }
     }
 }
