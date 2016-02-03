@@ -57,6 +57,15 @@ namespace Money
             return PerformBinaryOperation(money, operandValue, BinaryOperationHelper.Divide);
         }
 
+        public static Money<T> operator %(Money<T> money, object operand)
+        {
+            if (operand == null)
+                return money;
+
+            var operandValue = ParseNumericOperandValue(operand);
+            return PerformBinaryOperation(money, operandValue, BinaryOperationHelper.Modulo);
+        }
+
         private static Money<T> PerformBinaryOperation(
             Money<T> money, 
             T operandValue, 
