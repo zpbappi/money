@@ -19,9 +19,9 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         [Fact]
         public void SubtractingSameDataTypeWillReflectInMoney()
         {
-            var delta = 100;
+            const int delta = 100;
             var money = new Money<int>(42);
-            var expected = 42 - delta;
+            const int expected = 42 - delta;
             money -= delta;
             money.Amount.ShouldBe(expected);
         }
@@ -70,7 +70,7 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
             const short delta = 100;
             const short expected = -58;
 
-            AssertCanSubtractAllNumericTypesWithinRange<short>(new Money<short>(42), delta, expected);
+            AssertCanSubtractAllNumericTypesWithinRange(new Money<short>(42), delta, expected);
             AssertCanSubtractAllNumericTypesWithinRange(new Money<int>(42), delta, expected);
             AssertCanSubtractAllNumericTypesWithinRange(new Money<long>(42L), delta, expected);
             AssertCanSubtractAllNumericTypesWithinRange(new Money<float>(42f), delta, expected);

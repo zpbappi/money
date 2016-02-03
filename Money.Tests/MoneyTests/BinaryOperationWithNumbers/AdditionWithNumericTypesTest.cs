@@ -19,9 +19,9 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         [Fact]
         public void AddingSameDataTypeWillReflectInMoney()
         {
-            var delta = 100;
+            const int delta = 100;
             var money = new Money<int>(42);
-            var expected = 42 + delta;
+            const int expected = 42 + delta;
             money += delta;
             money.Amount.ShouldBe(expected);
         }
@@ -56,7 +56,7 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         }
 
         [Fact]
-        public void APlusBIsBPlusA()
+        public void APlusB_Is_BPlusA()
         {
             var money = new Money<int>(42);
             var actual = 100 + money;
@@ -70,7 +70,7 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
             const short delta = 100;
             const short expected = 142;
 
-            AssertCanAddAllNumericTypesWithinRange<short>(new Money<short>(42), delta, expected);
+            AssertCanAddAllNumericTypesWithinRange(new Money<short>(42), delta, expected);
             AssertCanAddAllNumericTypesWithinRange(new Money<int>(42), delta, expected);
             AssertCanAddAllNumericTypesWithinRange(new Money<long>(42L), delta, expected);
             AssertCanAddAllNumericTypesWithinRange(new Money<float>(42f), delta, expected);
