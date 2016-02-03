@@ -37,7 +37,7 @@ namespace Money.Tests.MoneyTests
         public void AddingWithNullWillNotChangeAnything()
         {
             var money = new Money<int>(42);
-            var actual = money + null;
+            var actual = money + (object)null;
             actual.ShouldBe(money);
         }
 
@@ -53,6 +53,15 @@ namespace Money.Tests.MoneyTests
         {
             var money = new Money<int>(42);
             Should.Throw<OverflowException>(() => money += int.MaxValue);
+        }
+
+        [Fact]
+        public void APlusBIsBPlusA()
+        {
+            var money = new Money<int>(42);
+            var actual = 100 + money;
+            var expected = money + 100;
+            actual.ShouldBe(expected);
         }
 
         [Fact]
