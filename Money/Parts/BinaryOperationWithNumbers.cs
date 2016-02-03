@@ -66,12 +66,15 @@ namespace Money
             return PerformBinaryOperation(money, operandValue, BinaryOperationHelper.Modulo);
         }
 
-        private static Money<T> PerformBinaryOperation(
-            Money<T> money, 
-            T operandValue, 
-            Func<T, T, T> binaryOperation)
+        public static Money<T> operator <<(Money<T> money, int operand)
         {
-            var newAmount = binaryOperation(money.Amount, operandValue);
+            var newAmount = BinaryOperationHelper.LeftShift(money.Amount, operand);
+            return new Money<T>(newAmount, money.Currency);
+        }
+
+        public static Money<T> operator >>(Money<T> money, int operand)
+        {
+            var newAmount = BinaryOperationHelper.RightShift(money.Amount, operand);
             return new Money<T>(newAmount, money.Currency);
         }
 
@@ -85,6 +88,15 @@ namespace Money
 
             var operandValue = NumericTypeHelper.ConvertTo<T>(operand);
             return operandValue;
+        }
+
+        private static Money<T> PerformBinaryOperation(
+            Money<T> money, 
+            T operandValue, 
+            Func<T, T, T> binaryOperation)
+        {
+            var newAmount = binaryOperation(money.Amount, operandValue);
+            return new Money<T>(newAmount, money.Currency);
         }
     }
 }

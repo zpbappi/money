@@ -71,6 +71,7 @@
     <Compile Include="MoneyTests\BinaryOperationWithNumbers\DivisionWithNumericTypesTest.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithNumbers\ModuleWithNumericTypesTest.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithNumbers\MultiplicationWithNumericTypesTest.cs" />
+    <Compile Include="MoneyTests\BinaryOperationWithNumbers\ShiftOperatorTests.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithNumbers\SubtractWithNumericTypesTest.cs" />
     <Compile Include="MoneyTests\ComparisonTest.cs" />
     <Compile Include="MoneyTests\ConstructionTest.cs" />

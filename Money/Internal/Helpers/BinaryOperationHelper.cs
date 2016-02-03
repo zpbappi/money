@@ -60,23 +60,24 @@ namespace Money.Internal.Helpers
             return Evaluate(left, right, Expression.ExclusiveOr);
         }
 
-        public static T LeftShift<T>(T left, T right)
+        public static T LeftShift<T>(T left, int right)
         {
             return Evaluate(left, right, Expression.LeftShift);
         }
 
-        public static T RightShift<T>(T left, T right)
+        public static T RightShift<T>(T left, int right)
         {
             return Evaluate(left, right, Expression.RightShift);
         }
 
-        private static T Evaluate<T>(T left, T right, Func<Expression, Expression, BinaryExpression> binaryOperation)
+        private static TLeft Evaluate<TLeft, TRight>(TLeft left, TRight right, Func<Expression, Expression, BinaryExpression> binaryOperation)
         {
-            var operandType = typeof (T);
-            var operandLeft = Expression.Constant(left, operandType);
-            var operandRight = Expression.Constant(right, operandType);
+            var leftOperandType = typeof (TLeft);
+            var rightOperandType = typeof (TRight);
+            var operandLeft = Expression.Constant(left, leftOperandType);
+            var operandRight = Expression.Constant(right, rightOperandType);
             var binaryExpression = binaryOperation(operandLeft, operandRight);
-            return Expression.Lambda<Func<T>>(binaryExpression).Compile()();
+            return Expression.Lambda<Func<TLeft>>(binaryExpression).Compile()();
         }
     }
 }
