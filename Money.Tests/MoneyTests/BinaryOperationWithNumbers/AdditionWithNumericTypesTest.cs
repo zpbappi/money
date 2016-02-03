@@ -4,7 +4,7 @@ using Money.Exceptions;
 using Shouldly;
 using Xunit;
 
-namespace Money.Tests.MoneyTests
+namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
 {
     public class AdditionWithNumericTypesTest
     {
@@ -67,13 +67,16 @@ namespace Money.Tests.MoneyTests
         [Fact]
         public void AdditionShouldWorkWithAnyCompatibleType()
         {
-            AssertCanAddAllNumericTypesWithinRange<short>(new Money<short>(42), 100, 142);
-            AssertCanAddAllNumericTypesWithinRange(new Money<int>(42), 100, 142);
-            AssertCanAddAllNumericTypesWithinRange(new Money<long>(42L), 100, 142);
-            AssertCanAddAllNumericTypesWithinRange(new Money<float>(42f), 100, 142);
-            AssertCanAddAllNumericTypesWithinRange(new Money<double>(42d), 100, 142);
-            AssertCanAddAllNumericTypesWithinRange(new Money<decimal>(42m), 100, 142);
-            AssertCanAddAllNumericTypesWithinRange(new Money<BigInteger>(new BigInteger(42)), 100, 142);
+            const short delta = 100;
+            const short expected = 142;
+
+            AssertCanAddAllNumericTypesWithinRange<short>(new Money<short>(42), delta, expected);
+            AssertCanAddAllNumericTypesWithinRange(new Money<int>(42), delta, expected);
+            AssertCanAddAllNumericTypesWithinRange(new Money<long>(42L), delta, expected);
+            AssertCanAddAllNumericTypesWithinRange(new Money<float>(42f), delta, expected);
+            AssertCanAddAllNumericTypesWithinRange(new Money<double>(42d), delta, expected);
+            AssertCanAddAllNumericTypesWithinRange(new Money<decimal>(42m), delta, expected);
+            AssertCanAddAllNumericTypesWithinRange(new Money<BigInteger>(new BigInteger(42)), delta, expected);
 
         }
 

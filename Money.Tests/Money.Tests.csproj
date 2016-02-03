@@ -67,7 +67,8 @@
     <Compile Include="Internal\Helpers\NumericCastAssertionHelper.cs" />
     <Compile Include="Internal\Helpers\NumericTypeHelperTests.cs" />
     <Compile Include="Internal\Helpers\UnaryOperationHelperTests.cs" />
-    <Compile Include="MoneyTests\AdditionWithNumericTypesTest.cs" />
+    <Compile Include="MoneyTests\BinaryOperationWithNumbers\AdditionWithNumericTypesTest.cs" />
+    <Compile Include="MoneyTests\BinaryOperationWithNumbers\SubtractWithNumericTypesTest.cs" />
     <Compile Include="MoneyTests\ComparisonTest.cs" />
     <Compile Include="MoneyTests\ConstructionTest.cs" />
     <Compile Include="MoneyTests\EqualityTest.cs" />
