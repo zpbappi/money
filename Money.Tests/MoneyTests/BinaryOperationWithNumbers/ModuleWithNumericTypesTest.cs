@@ -39,13 +39,6 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         }
 
         [Fact]
-        public void TryingToGetModuloInvalidType_ShouldResultInProperException()
-        {
-            var money = new Money<int>(42);
-            Should.Throw<IncompatibleAmountTypeException>(() => money %= "INVALID");
-        }
-
-        [Fact]
         public void ModuleByNull_ShouldNotChangeAnything()
         {
             var money = new Money<int>(42);

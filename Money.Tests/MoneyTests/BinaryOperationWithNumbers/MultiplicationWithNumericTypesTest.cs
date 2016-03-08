@@ -35,17 +35,10 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         }
 
         [Fact]
-        public void TryingToMultiplyInvalidType_ShouldResultInProperException()
-        {
-            var money = new Money<int>(42);
-            Should.Throw<IncompatibleAmountTypeException>(() => money *= "INVALID");
-        }
-
-        [Fact]
         public void MultiplyingWithNull_ShouldNotChangeAnything()
         {
             var money = new Money<int>(42);
-            var actual = money * (object)null;
+            var actual = money * null;
             actual.ShouldBe(money);
         }
 

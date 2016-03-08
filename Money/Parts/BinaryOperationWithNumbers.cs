@@ -6,7 +6,7 @@ namespace Money
 {
     public partial class Money<T>
     {
-        public static Money<T> operator +(Money<T> money, object operand)
+        public static Money<T> operator +(Money<T> money, ValueType operand)
         {
             if (operand == null)
                 return money;
@@ -15,12 +15,12 @@ namespace Money
             return PerformBinaryOperation(money, operandValue, BinaryOperationHelper.AddChecked);
         }
 
-        public static Money<T> operator +(object operand, Money<T> money)
+        public static Money<T> operator +(ValueType operand, Money<T> money)
         {
             return money + operand;
         }
 
-        public static Money<T> operator -(Money<T> money, object operand)
+        public static Money<T> operator -(Money<T> money, ValueType operand)
         {
             if (operand == null)
                 return money;
@@ -29,12 +29,12 @@ namespace Money
             return PerformBinaryOperation(money, operandValue, BinaryOperationHelper.SubtractChecked);
         }
 
-        public static Money<T> operator -(object operand, Money<T> money)
+        public static Money<T> operator -(ValueType operand, Money<T> money)
         {
             return money - operand;
         }
 
-        public static Money<T> operator *(Money<T> money, object operand)
+        public static Money<T> operator *(Money<T> money, ValueType operand)
         {
             if (operand == null)
                 return money;
@@ -43,12 +43,12 @@ namespace Money
             return PerformBinaryOperation(money, operandValue, BinaryOperationHelper.MultiplyChecked);
         }
 
-        public static Money<T> operator *(object operand, Money<T> money)
+        public static Money<T> operator *(ValueType operand, Money<T> money)
         {
             return money * operand;
         }
 
-        public static Money<T> operator /(Money<T> money, object operand)
+        public static Money<T> operator /(Money<T> money, ValueType operand)
         {
             if (operand == null)
                 return money;
@@ -57,7 +57,7 @@ namespace Money
             return PerformBinaryOperation(money, operandValue, BinaryOperationHelper.Divide);
         }
 
-        public static Money<T> operator %(Money<T> money, object operand)
+        public static Money<T> operator %(Money<T> money, ValueType operand)
         {
             if (operand == null)
                 return money;
@@ -78,7 +78,7 @@ namespace Money
             return new Money<T>(newAmount, money.Currency);
         }
 
-        private static T ParseNumericOperandValue(object operand)
+        private static T ParseNumericOperandValue(ValueType operand)
         {
             if (!NumericTypeHelper.CanCastTo<T>(operand))
                 throw new IncompatibleAmountTypeException(

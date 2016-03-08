@@ -27,17 +27,10 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         }
 
         [Fact]
-        public void TryingToAddInvalidTypeWillResultInProperException()
-        {
-            var money = new Money<int>(42);
-            Should.Throw<IncompatibleAmountTypeException>(() => money += "INVALID");
-        }
-
-        [Fact]
         public void AddingWithNullWillNotChangeAnything()
         {
             var money = new Money<int>(42);
-            var actual = money + (object)null;
+            var actual = money + null;
             actual.ShouldBe(money);
         }
 
