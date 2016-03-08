@@ -68,6 +68,9 @@
     <Compile Include="Internal\Helpers\NumericTypeHelperTests.cs" />
     <Compile Include="Internal\Helpers\UnaryOperationHelperTests.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithMoney\BinaryOperationBetweenMoneyObjectsTest.cs" />
+    <Compile Include="MoneyTests\BinaryOperationWithMoney\BinaryOperationsWithoutConverterTest.cs" />
+    <Compile Include="MoneyTests\BinaryOperationWithMoney\BinaryOperationWithConverterTest.cs" />
+    <Compile Include="MoneyTests\BinaryOperationWithMoney\MockCurrencyConverter.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithNumbers\AdditionWithNumericTypesTest.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithNumbers\DivisionWithNumericTypesTest.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithNumbers\ModuleWithNumericTypesTest.cs" />

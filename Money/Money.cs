@@ -3,16 +3,13 @@ using System.Globalization;
 
 namespace Money
 {
-    public abstract class Money
-    {
-        public string Currency { get; protected set; }
-    }
-
-    public sealed partial class Money<T> : Money,
+    public partial class Money<T> :
         IEquatable<Money<T>>, IComparable, IComparable<Money<T>> 
         where T : struct, IComparable, IComparable<T>
     {
         public T Amount { get; private set; }
+
+        public string Currency { get; protected set; }
 
         public Money(T amount, string currency)
         {

@@ -1,16 +1,20 @@
-﻿namespace Money.WalletComposer
-{
-    internal class MultiItemWallet : Wallet
-    {
-        public Wallet Left { get; private set; }
-        public Wallet Right { get; private set; }
-        public IOperation Operation { get; private set; }
+﻿using System;
+using Money.WalletComposer.Operation;
 
-        internal MultiItemWallet(Wallet left, Wallet right, IOperation operation)
+namespace Money.WalletComposer
+{
+    internal class MultiItemWallet<T> : Wallet<T> 
+        where T : struct, IComparable, IComparable<T>
+    {
+        public Wallet<T> Left { get; private set; }
+        public Wallet<T> Right { get; private set; }
+        public IBinaryOperation BinaryOperation { get; private set; }
+
+        internal MultiItemWallet(Wallet<T> left, Wallet<T> right, IBinaryOperation binaryOperation)
         {
             this.Left = left;
             this.Right = right;
-            this.Operation = operation;
+            this.BinaryOperation = binaryOperation;
         }
 
         protected internal override string Currency
@@ -25,6 +29,13 @@
 
                 return leftCurrency == rightCurrency ? leftCurrency : null;
             }
+        }
+
+        protected override Money<T> EvaluateInner(ICurrencyConverter<T> currencyConverter, string toCurrency)
+        {
+            var leftEquivalent = this.Left.Evaluate(currencyConverter, toCurrency);
+            var rightEquivalent = this.Right.Evaluate(currencyConverter, toCurrency);
+            return this.BinaryOperation.Operate(leftEquivalent, rightEquivalent);
         }
     }
 }

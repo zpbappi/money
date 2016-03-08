@@ -44,7 +44,14 @@
     <Compile Include="Exceptions\CurrencyMismatchException.cs" />
     <Compile Include="Exceptions\IncompatibleAmountTypeException.cs" />
     <Compile Include="Exceptions\IncompatibleMoneyTypeException.cs" />
-    <Compile Include="WalletComposer\IOperation.cs" />
+    <Compile Include="ICurrencyConverter.cs" />
+    <Compile Include="Internal\PassThroughCurrencyConverter.cs" />
+    <Compile Include="WalletComposer\Operation\AdditionOperation.cs" />
+    <Compile Include="WalletComposer\Operation\BinaryOperation.cs" />
+    <Compile Include="WalletComposer\Operation\DivisionOperation.cs" />
+    <Compile Include="WalletComposer\Operation\IBinaryOperation.cs" />
+    <Compile Include="WalletComposer\Operation\ModuloOperation.cs" />
+    <Compile Include="WalletComposer\Operation\MultiplicationOperation.cs" />
     <Compile Include="WalletComposer\SingleItemWallet.cs" />
     <Compile Include="WalletComposer\MultiItemWallet.cs" />
     <Compile Include="Internal\Helpers\BinaryOperationHelper.cs" />
@@ -58,6 +65,7 @@
     <Compile Include="Internal\Helpers\UnaryOperationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Wallet.cs" />
+    <Compile Include="WalletComposer\Operation\SubtractionOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

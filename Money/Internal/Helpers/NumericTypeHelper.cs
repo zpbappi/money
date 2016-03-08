@@ -21,13 +21,13 @@ namespace Money.Internal.Helpers
             }
         }
 
-        public static T ConvertTo<T>(object value)
+        public static T ConvertTo<T>(ValueType value)
         {
             var exp = Expression.ConvertChecked(Expression.Constant(value, value.GetType()), typeof(T));
             return Expression.Lambda<Func<T>>(exp).Compile()();
         }
 
-        public static T? TryConvertTo<T>(object value) where T : struct 
+        public static T? TryConvertTo<T>(ValueType value) where T : struct 
         {
             try
             {
