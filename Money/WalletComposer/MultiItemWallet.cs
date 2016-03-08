@@ -18,7 +18,10 @@
             get
             {
                 var leftCurrency = this.Left.Currency;
-                var rightCurrency = this.Left.Currency;
+                if (leftCurrency == null)
+                    return null;
+
+                var rightCurrency = this.Right.Currency;
 
                 return leftCurrency == rightCurrency ? leftCurrency : null;
             }
