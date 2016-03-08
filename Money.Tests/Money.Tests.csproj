@@ -67,6 +67,7 @@
     <Compile Include="Internal\Helpers\NumericCastAssertionHelper.cs" />
     <Compile Include="Internal\Helpers\NumericTypeHelperTests.cs" />
     <Compile Include="Internal\Helpers\UnaryOperationHelperTests.cs" />
+    <Compile Include="MoneyTests\BinaryOperationWithMoney\BinaryOperationBetweenMoneyObjectsTest.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithNumbers\AdditionWithNumericTypesTest.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithNumbers\DivisionWithNumericTypesTest.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithNumbers\ModuleWithNumericTypesTest.cs" />
@@ -91,9 +92,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MoneyTests\BinaryOperationWithMoney\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
