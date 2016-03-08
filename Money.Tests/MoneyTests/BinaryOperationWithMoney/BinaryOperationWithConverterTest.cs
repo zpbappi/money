@@ -12,6 +12,7 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithMoney
         {
             var mock = new MockCurrencyConverter();
             mock.RegisterConversionRate("USD", "AUD", 1.3m);
+            mock.RegisterConversionRate("EUR", "AUD", 1.8m);
             
             this.currencyConverter = mock;
         }
@@ -30,6 +31,20 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithMoney
             var actual = wallet.Evaluate(this.currencyConverter, "AUD");
 
             var expected = new Money<decimal>(137.674m, "AUD");
+
+            actual.ShouldBe(expected);
+        }
+
+        [Fact]
+        public void ShouldBeAbleToConvertToACurrencyThatDoesNotAppearInEquation()
+        {
+            var m1 = new Money<decimal>(100m, "USD");
+            var m2 = new Money<decimal>(33m, "EUR");
+
+            var wallet = m1 + m2;
+            var actual = wallet.Evaluate(this.currencyConverter, "AUD");
+
+            var expected = new Money<decimal>(189.4m, "AUD");
 
             actual.ShouldBe(expected);
         }

@@ -46,6 +46,7 @@
     <Compile Include="Exceptions\IncompatibleMoneyTypeException.cs" />
     <Compile Include="ICurrencyConverter.cs" />
     <Compile Include="Internal\PassThroughCurrencyConverter.cs" />
+    <Compile Include="CachedCurrencyConverter.cs" />
     <Compile Include="WalletComposer\Operation\AdditionOperation.cs" />
     <Compile Include="WalletComposer\Operation\BinaryOperation.cs" />
     <Compile Include="WalletComposer\Operation\DivisionOperation.cs" />

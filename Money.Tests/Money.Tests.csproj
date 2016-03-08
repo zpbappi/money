@@ -63,10 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CachedConverterTest.cs" />
     <Compile Include="Internal\Helpers\CustomNumber.cs" />
     <Compile Include="Internal\Helpers\NumericCastAssertionHelper.cs" />
     <Compile Include="Internal\Helpers\NumericTypeHelperTests.cs" />
     <Compile Include="Internal\Helpers\UnaryOperationHelperTests.cs" />
+    <Compile Include="MockCountingConverter.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithMoney\BinaryOperationBetweenMoneyObjectsTest.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithMoney\BinaryOperationsWithoutConverterTest.cs" />
     <Compile Include="MoneyTests\BinaryOperationWithMoney\BinaryOperationWithConverterTest.cs" />
