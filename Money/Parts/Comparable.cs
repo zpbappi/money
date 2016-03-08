@@ -3,7 +3,7 @@ using Money.Exceptions;
 
 namespace Money
 {
-    public partial class Money<T>
+    public sealed partial class Money<T>
     {
         public int CompareTo(Money<T> other)
         {

@@ -4,7 +4,7 @@ using Money.Internal.Helpers;
 
 namespace Money
 {
-    public partial class Money<T>
+    public sealed partial class Money<T>
     {
         public static Money<T> operator +(Money<T> money, ValueType operand)
         {

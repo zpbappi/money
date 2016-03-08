@@ -30,7 +30,7 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         public void AddingWithNullWillNotChangeAnything()
         {
             var money = new Money<int>(42);
-            var actual = money + null;
+            var actual = money + (ValueType)null;
             actual.ShouldBe(money);
         }
 

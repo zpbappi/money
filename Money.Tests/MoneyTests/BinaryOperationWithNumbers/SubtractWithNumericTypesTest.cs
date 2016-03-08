@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Numerics;
-using Money.Exceptions;
 using Shouldly;
 using Xunit;
 
@@ -30,7 +29,7 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         public void SubtractWithNullWillNotChangeAnything()
         {
             var money = new Money<int>(42);
-            var actual = money - null;
+            var actual = money - (ValueType)null;
             actual.ShouldBe(money);
         }
 

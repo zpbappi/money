@@ -2,7 +2,7 @@
 
 namespace Money
 {
-    public partial class Money<T>
+    public sealed partial class Money<T>
     {
         public static bool operator ==(Money<T> money1, Money<T> money2)
         {

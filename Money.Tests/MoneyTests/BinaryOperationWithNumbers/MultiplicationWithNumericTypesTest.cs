@@ -38,7 +38,7 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithNumbers
         public void MultiplyingWithNull_ShouldNotChangeAnything()
         {
             var money = new Money<int>(42);
-            var actual = money * null;
+            var actual = money * (ValueType)null;
             actual.ShouldBe(money);
         }
 
