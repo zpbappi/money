@@ -19,6 +19,8 @@ Yet another money class written in C#.
 
 ## Usage
 
+Start by installing this [nuget package](https://www.nuget.org/packages/Multi-Currency-Money/).
+
 Create:
 ```csharp
 // create money with decimal type of amount in my currency
