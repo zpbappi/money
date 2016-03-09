@@ -11,62 +11,62 @@ namespace Money.Tests.Internal.Helpers
             this.number = number;
         }
 
-        static public implicit operator CustomNumber(short number)
+        public static implicit operator CustomNumber(short number)
         {
             return new CustomNumber(number);
         }
 
-        static public implicit operator CustomNumber(int number)
+        public static implicit operator CustomNumber(int number)
         {
             return new CustomNumber(number);
         }
 
-        static public implicit operator CustomNumber(long number)
+        public static implicit operator CustomNumber(long number)
         {
             return new CustomNumber(number);
         }
 
-        static public implicit operator CustomNumber(double number)
+        public static implicit operator CustomNumber(double number)
         {
             return new CustomNumber((decimal)number);
         }
 
-        static public implicit operator CustomNumber(decimal number)
+        public static implicit operator CustomNumber(decimal number)
         {
             return new CustomNumber(number);
         }
 
-        static public implicit operator CustomNumber(BigInteger number)
+        public static implicit operator CustomNumber(BigInteger number)
         {
             return new CustomNumber((decimal)number);
         }
 
-        static public implicit operator short(CustomNumber number)
+        public static implicit operator short(CustomNumber number)
         {
             return (short)number.number;
         }
 
-        static public implicit operator int(CustomNumber number)
+        public static implicit operator int(CustomNumber number)
         {
             return (int)number.number;
         }
 
-        static public implicit operator long(CustomNumber number)
+        public static implicit operator long(CustomNumber number)
         {
             return (long)number.number;
         }
 
-        static public implicit operator double(CustomNumber number)
+        public static implicit operator double(CustomNumber number)
         {
             return (double)number.number;
         }
 
-        static public implicit operator decimal(CustomNumber number)
+        public static implicit operator decimal(CustomNumber number)
         {
             return number.number;
         }
 
-        static public implicit operator BigInteger(CustomNumber number)
+        public static implicit operator BigInteger(CustomNumber number)
         {
             return new BigInteger(number.number);
         }
