@@ -42,7 +42,7 @@ var audWallet = m1 + m2;
 var audWalletValueAsMoney = audWallet.EvaluateWithoutConversion();
 
 var multinationalWallet = (m1 % m5) + ((m2 * 3.5m) / m4) - (m3 * 9m);
-var currencyConverter = new MyCurrencyConverter(); //this is some you supply
+var currencyConverter = new MyCurrencyConverter(); // this is an implementation ICurrencyConverter<T> that something you should supply
 var resultingMoneyInAUD = multinationalWallet.Evaluate(currencyConverter, "AUD");
 ```
 
