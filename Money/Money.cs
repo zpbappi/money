@@ -9,21 +9,29 @@ namespace Money
     {
         public T Amount { get; private set; }
 
-        public string Currency { get; protected set; }
+        public Currency Currency { get; private set; }
 
+        public Money(T amount, Currency currency)
+        {
+            this.Amount = amount;
+            this.Currency = currency;
+        } 
+
+        [Obsolete("Use Money<T>(T, Currency) instead of string currency code.")]
         public Money(T amount, string currency)
         {
             if(string.IsNullOrWhiteSpace(currency))
                 throw new ArgumentNullException("currency");
 
             this.Amount = amount;
-            this.Currency = currency.ToUpperInvariant();
+            this.Currency = (Currency)Enum.Parse(typeof(Currency), currency.ToUpperInvariant());
         }
 
         public Money(T amount)
             : this(
                 amount,
-                new RegionInfo(CultureInfo.CurrentUICulture.LCID).ISOCurrencySymbol)
+                (Currency)
+                    Enum.Parse(typeof (Currency), new RegionInfo(CultureInfo.CurrentUICulture.LCID).ISOCurrencySymbol))
         {
         }
     }

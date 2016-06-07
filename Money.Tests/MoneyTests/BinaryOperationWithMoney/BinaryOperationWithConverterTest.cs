@@ -11,8 +11,8 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithMoney
         public BinaryOperationWithConverterTest()
         {
             var mock = new MockCurrencyConverter();
-            mock.RegisterConversionRate("USD", "AUD", 1.3m);
-            mock.RegisterConversionRate("EUR", "AUD", 1.8m);
+            mock.RegisterConversionRate(Currency.USD, Currency.AUD, 1.3m);
+            mock.RegisterConversionRate(Currency.EUR, Currency.AUD, 1.8m);
             
             this.currencyConverter = mock;
         }

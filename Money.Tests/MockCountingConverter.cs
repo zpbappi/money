@@ -13,16 +13,16 @@ namespace Money.Tests
             this.Amounts = new List<decimal>();
         }
  
-        public decimal Convert(decimal fromAmount, string fromCurrency, string toCurrency)
+        public decimal Convert(decimal fromAmount, Currency fromCurrency, Currency toCurrency)
         {
             this.Amounts.Add(fromAmount);
             this.CurrencyPairs.Add(GenerateCurrencyPair(fromCurrency, toCurrency));
             return 1m;
         }
 
-        public static string GenerateCurrencyPair(string fromCurrency, string toCurrency)
+        public static string GenerateCurrencyPair(Currency fromCurrency, Currency toCurrency)
         {
-            return (fromCurrency.ToUpperInvariant() + "/" + toCurrency.ToUpperInvariant());
+            return (fromCurrency + "/" + toCurrency);
         }
     }
 }

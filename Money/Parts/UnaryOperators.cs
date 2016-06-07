@@ -25,7 +25,7 @@ namespace Money
 
         private static Money<T> ApplyUnaryOperation(
             T amount, 
-            string currency,
+            Currency currency,
             Func<Expression, UnaryExpression> unaryExpressionFunction)
         {
             var currentValue = Expression.Constant(amount, typeof(T));

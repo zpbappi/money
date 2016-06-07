@@ -12,20 +12,20 @@ namespace Money.Tests.MoneyTests.BinaryOperationWithMoney
             this.conversionRates = new Dictionary<string, decimal>();
         }
 
-        public void RegisterConversionRate(string fromCurrency, string toCurrency, decimal rate)
+        public void RegisterConversionRate(Currency fromCurrency, Currency toCurrency, decimal rate)
         {
-            var key = string.Format("{0}-{1}", fromCurrency.ToUpperInvariant(), toCurrency.ToUpperInvariant());
+            var key = string.Format("{0}-{1}", fromCurrency, toCurrency);
             this.conversionRates[key] = rate;
-            key = string.Format("{0}-{1}", toCurrency.ToUpperInvariant(), fromCurrency.ToUpperInvariant());
+            key = string.Format("{0}-{1}", toCurrency, fromCurrency);
             this.conversionRates[key] = 1m/rate;
         }
 
-        public decimal Convert(decimal fromAmount, string fromCurrency, string toCurrency)
+        public decimal Convert(decimal fromAmount, Currency fromCurrency, Currency toCurrency)
         {
-            if(string.Equals(fromCurrency, toCurrency, StringComparison.InvariantCultureIgnoreCase))
+            if(fromCurrency == toCurrency)
                 return fromAmount;
 
-            var key = string.Format("{0}-{1}", fromCurrency.ToUpperInvariant(), toCurrency.ToUpperInvariant());
+            var key = string.Format("{0}-{1}", fromCurrency, toCurrency);
 
             if(!this.conversionRates.ContainsKey(key))
                 throw new KeyNotFoundException("Cannot find the conversion rate " + key);

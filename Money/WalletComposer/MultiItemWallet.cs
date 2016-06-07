@@ -17,21 +17,21 @@ namespace Money.WalletComposer
             this.BinaryOperation = binaryOperation;
         }
 
-        protected internal override string Currency
+        protected internal override Currency Currency
         {
             get
             {
                 var leftCurrency = this.Left.Currency;
-                if (leftCurrency == null)
-                    return null;
+                if (leftCurrency == Currency.Invalid)
+                    return leftCurrency;
 
                 var rightCurrency = this.Right.Currency;
 
-                return leftCurrency == rightCurrency ? leftCurrency : null;
+                return leftCurrency == rightCurrency ? leftCurrency : Currency.Invalid;
             }
         }
 
-        protected override Money<T> EvaluateInner(ICurrencyConverter<T> currencyConverter, string toCurrency)
+        protected override Money<T> EvaluateInner(ICurrencyConverter<T> currencyConverter, Currency toCurrency)
         {
             var leftEquivalent = this.Left.Evaluate(currencyConverter, toCurrency);
             var rightEquivalent = this.Right.Evaluate(currencyConverter, toCurrency);

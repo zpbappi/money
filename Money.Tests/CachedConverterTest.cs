@@ -23,18 +23,6 @@ namespace Money.Tests
         }
 
         [Fact]
-        public void WhenCallingWithNoSourceCurrency_ShouldThrow()
-        {
-            Should.Throw<ArgumentNullException>(() => this.sut.Convert(123m, null, "AUD"));
-        }
-
-        [Fact]
-        public void WhenCallingWithNoDestinationCurrency_ShouldThrow()
-        {
-            Should.Throw<ArgumentNullException>(() => this.sut.Convert(123m, "AUD", null));
-        }
-
-        [Fact]
         public void ShouldOnlyCallToConvertOne()
         {
             var m1 = new Money<decimal>(100m, "AUD");
@@ -45,7 +33,7 @@ namespace Money.Tests
 
             var wallet = m1 - ((m2 % m3) + m5) * m4;
 
-            wallet.Evaluate(this.sut, "AUD");
+            wallet.Evaluate(this.sut, Currency.AUD);
             this.mockCountingConverter.Amounts.ShouldAllBe(x => x == 1m);
         }
 
@@ -66,9 +54,9 @@ namespace Money.Tests
             
             var expected = new[]
             {
-                MockCountingConverter.GenerateCurrencyPair("AUD", "AUD"),
-                MockCountingConverter.GenerateCurrencyPair("EUR", "AUD"),
-                MockCountingConverter.GenerateCurrencyPair("USD", "AUD")
+                MockCountingConverter.GenerateCurrencyPair(Currency.AUD, Currency.AUD),
+                MockCountingConverter.GenerateCurrencyPair(Currency.EUR, Currency.AUD),
+                MockCountingConverter.GenerateCurrencyPair(Currency.USD, Currency.AUD)
             };
 
             actual.ShouldBe(expected);
@@ -96,9 +84,9 @@ namespace Money.Tests
 
             var expected = new[]
             {
-                MockCountingConverter.GenerateCurrencyPair("AUD", "AUD"),
-                MockCountingConverter.GenerateCurrencyPair("EUR", "AUD"),
-                MockCountingConverter.GenerateCurrencyPair("USD", "AUD")
+                MockCountingConverter.GenerateCurrencyPair(Currency.AUD, Currency.AUD),
+                MockCountingConverter.GenerateCurrencyPair(Currency.EUR, Currency.AUD),
+                MockCountingConverter.GenerateCurrencyPair(Currency.USD, Currency.AUD)
             };
 
             this.mockCountingConverter.Amounts.ShouldAllBe(x => x == 1m);

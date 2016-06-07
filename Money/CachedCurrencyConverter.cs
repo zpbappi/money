@@ -20,14 +20,8 @@ namespace Money
             this.one = new Lazy<T>(() => NumericTypeHelper.ConvertTo<T>(1));
         }
 
-        public T Convert(T fromAmount, string fromCurrency, string toCurrency)
+        public T Convert(T fromAmount, Currency fromCurrency, Currency toCurrency)
         {
-            if (string.IsNullOrWhiteSpace(fromCurrency))
-                throw new ArgumentNullException("fromCurrency");
-
-            if(string.IsNullOrWhiteSpace(toCurrency))
-                throw new ArgumentNullException("toCurrency");
-
             var key = GenerateKey(fromCurrency, toCurrency);
 
             if (!this.rateCache.ContainsKey(key))
@@ -36,16 +30,16 @@ namespace Money
             return BinaryOperationHelper.MultiplyChecked(fromAmount, this.rateCache[key]);
         }
 
-        private void PopulateRate(string fromCurrency, string toCurrency)
+        private void PopulateRate(Currency fromCurrency, Currency toCurrency)
         {
             var rate = this.CurrencyConverter.Convert(this.one.Value, fromCurrency, toCurrency);
             var key = GenerateKey(fromCurrency, toCurrency);
             this.rateCache[key] = rate;
         }
 
-        private static string GenerateKey(string fromCurrency, string toCurrency)
+        private static string GenerateKey(Currency fromCurrency, Currency toCurrency)
         {
-            return string.Format("{0}-{1}", fromCurrency.ToUpperInvariant(), toCurrency.ToUpperInvariant());
+            return string.Format("{0}-{1}", fromCurrency, toCurrency);
         }
     }
 }

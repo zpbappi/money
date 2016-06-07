@@ -8,29 +8,35 @@ namespace Money
     public abstract class Wallet<T> 
         where T : struct, IComparable, IComparable<T>
     {
-        protected internal abstract string Currency { get; }
+        protected internal abstract Currency Currency { get; }
 
-        protected abstract Money<T> EvaluateInner(ICurrencyConverter<T> currencyConverter, string toCurrency);
+        protected abstract Money<T> EvaluateInner(ICurrencyConverter<T> currencyConverter, Currency toCurrency);
 
-        public Money<T> Evaluate(ICurrencyConverter<T> currencyConverter, string toCurrency)
+        public Money<T> Evaluate(ICurrencyConverter<T> currencyConverter, Currency toCurrency)
         {
             if(currencyConverter == null)
                 throw new ArgumentNullException("currencyConverter");
 
-            if(string.IsNullOrWhiteSpace(toCurrency))
-                throw new ArgumentNullException("toCurrency");
-
             return this.EvaluateInner(currencyConverter, toCurrency);
         }
+
+        [Obsolete("Use Evaluate(ICurrencyConverter<T>, Currency) instead of this.")]
+        public Money<T> Evaluate(ICurrencyConverter<T> currencyConverter, string toCurrency)
+        {
+            if (string.IsNullOrWhiteSpace(toCurrency))
+                throw new ArgumentNullException("toCurrency");
+
+            return this.Evaluate(currencyConverter, (Currency) Enum.Parse(typeof (Currency), toCurrency.ToUpperInvariant()));
+        } 
 
         public Money<T> EvaluateWithoutConversion()
         {
             var commonCurrency = this.Currency;
-            if (commonCurrency == null)
+            if (commonCurrency == Currency.Invalid)
                 throw new InvalidOperationException(
                     "Cannot evaluate the amount without any currency converter, as there are items with different currencies.");
 
-            return this.Evaluate(new PassThroughCurrencyConverter<T>(), commonCurrency.ToUpperInvariant());
+            return this.Evaluate(new PassThroughCurrencyConverter<T>(), commonCurrency);
         } 
 
         public static implicit operator Wallet<T>(Money<T> money)

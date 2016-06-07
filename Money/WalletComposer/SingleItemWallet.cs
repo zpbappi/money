@@ -12,7 +12,7 @@ namespace Money.WalletComposer
             this.Money = money;
         }
 
-        protected internal override string Currency
+        protected internal override Currency Currency
         {
             get
             {
@@ -20,7 +20,7 @@ namespace Money.WalletComposer
             }
         }
 
-        protected override Money<T> EvaluateInner(ICurrencyConverter<T> currencyConverter, string toCurrency)
+        protected override Money<T> EvaluateInner(ICurrencyConverter<T> currencyConverter, Currency toCurrency)
         {
             var convertedAmount = currencyConverter.Convert(this.Money.Amount, this.Money.Currency, toCurrency);
             return new Money<T>(convertedAmount, toCurrency);

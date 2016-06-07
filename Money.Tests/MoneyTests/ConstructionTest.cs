@@ -34,7 +34,7 @@ namespace Money.Tests.MoneyTests
         [InlineData("AUD")]
         public void CurrencyCodeShouldBeCaseIgnorant(string currency)
         {
-            const string expectedCurrency = "AUD";
+            const Currency expectedCurrency = Currency.AUD;
             var money = new Money(42, currency);
 
             money.Currency.ShouldBe(expectedCurrency);
@@ -44,9 +44,11 @@ namespace Money.Tests.MoneyTests
         public void WhenCurrencyIsNotSpecified_ShouldCreateWithCurrentCultureCurrency()
         {
             var money = new Money(42);
-            var expected =
+            var expectedCurrencyCode =
                 new System.Globalization.RegionInfo(System.Globalization.CultureInfo.CurrentUICulture.LCID)
                     .ISOCurrencySymbol.ToUpperInvariant();
+
+            var expected = (Currency) Enum.Parse(typeof (Currency), expectedCurrencyCode);
 
             money.Currency.ShouldBe(expected);
         }
